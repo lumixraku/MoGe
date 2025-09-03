@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+.DS_Store
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -401,7 +402,7 @@ FodyWeavers.xsd
 *.egg-info/
 /build
 
-# MoGe 
+# MoGe
 /data*
 /download
 /extract
@@ -411,6 +412,7 @@ FodyWeavers.xsd
 /infer_output
 /video_output
 /eval_output
+output/
 /.blobcache
 /test_images
 /test_videos

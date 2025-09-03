@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uv:*)",
+      "Bash(git lfs:*)",
+      "Bash(brew install:*)",
+      "WebSearch",
+      "Bash(timeout:*)",
+      "WebFetch(domain:gradio.app)",
+      "WebFetch(domain:www.gradio.app)",
+      "Bash(curl:*)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "auto_approve": true,
+  "auto_confirm": true,
+  "always_allow_tools": true,
+  "skip_confirmations": true
+}
