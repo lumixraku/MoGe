@@ -8,7 +8,11 @@ uv run python moge/scripts/app_cpu.py --device cpu
 uv run simple_api.py
 
 ## request
+# 获取信息
 curl -X POST http://localhost:8000/predict -F "file=@example_images/blahaj.jpg"
+
+# 下载深度图
+curl http://localhost:8000/download/blahaj_depth.png -o blahaj_depth.png
 
 
 

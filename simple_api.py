@@ -113,5 +113,25 @@ async def predict(file: UploadFile = File(...)):
     except Exception as e:
         return {"success": False, "error": str(e)}
 
+@app.get("/download/{filename}")
+async def download_file(filename: str):
+    """下载生成的文件"""
+    file_path = f"./output/{filename}"
+    
+    if not os.path.exists(file_path):
+        return {"error": f"File {filename} not found"}
+    
+    # 根据文件扩展名设置 media_type
+    if filename.endswith('.png'):
+        media_type = 'image/png'
+    elif filename.endswith('.exr'):
+        media_type = 'application/octet-stream'
+    elif filename.endswith('.json'):
+        media_type = 'application/json'
+    else:
+        media_type = 'application/octet-stream'
+    
+    return FileResponse(file_path, media_type=media_type, filename=filename)
+
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
