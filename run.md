@@ -15,7 +15,8 @@ curl -X POST http://localhost:8000/predict -F "file=@example_images/blahaj.jpg"
 curl http://localhost:8000/download/blahaj_depth.png -o blahaj_depth.png
 
 
-
+##
+docker-compose -f docker-compose.cpu.yml up
 ##
 curl 'http://127.0.0.1:7861/gradio_api/queue/join?' \
   -H 'Accept: */*' \

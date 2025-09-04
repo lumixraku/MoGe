@@ -1,0 +1,12 @@
+services:
+  moge-api-cpu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./model_cache:/root/.cache/huggingface
+    environment:
+      - OPENCV_IO_ENABLE_OPENEXR=1
+    platform: linux/amd64

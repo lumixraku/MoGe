@@ -8,7 +8,12 @@
       "Bash(timeout:*)",
       "WebFetch(domain:gradio.app)",
       "WebFetch(domain:www.gradio.app)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(grep:*)",
+      "Bash(docker build:*)",
+      "Bash(docker-compose -f docker-compose.cpu.yml build)",
+      "Bash(cat:*)",
+      "WebFetch(domain:hub.docker.com)"
     ],
     "deny": [],
     "ask": []

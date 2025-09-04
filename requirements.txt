@@ -12,4 +12,6 @@ pillow          # ==10.4.0
 huggingface_hub # ==0.25.2
 flask           # ==2.3.3
 flask-cors      # ==4.0.0
+fastapi         # ==0.112.4
+uvicorn         # ==0.30.6
 git+https://github.com/EasternJournalist/utils3d.git@c5daf6f6c244d251f252102d09e9b7bcef791a38

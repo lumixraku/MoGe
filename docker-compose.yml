@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  moge-api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./output:/app/output
+    environment:
+      - OPENCV_IO_ENABLE_OPENEXR=1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    command: uv run simple_api.py
+
+  moge-api-cpu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./model_cache:/root/.cache/huggingface
+    environment:
+      - OPENCV_IO_ENABLE_OPENEXR=1
+    platform: linux/amd64

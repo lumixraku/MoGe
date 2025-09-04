@@ -235,6 +235,50 @@ Options:
 
 See also [`moge/scripts/infer.py`](moge/scripts/infer.py)
 
+### Docker | Running with Docker
+
+You can also run MoGe using Docker for easier deployment and dependency management.
+
+#### Building the Docker image
+
+```bash
+docker build -t moge .
+```
+
+#### Running the API with Docker
+
+```bash
+# Run with GPU support (requires NVIDIA Docker runtime)
+docker run --gpus all -p 8000:8000 -v $(pwd)/output:/app/output moge
+
+# Run with CPU only
+docker run -p 8000:8000 -v $(pwd)/output:/app/output moge
+```
+
+#### Using Docker Compose
+
+We also provide docker-compose files for easier management:
+
+```bash
+# For GPU-enabled systems
+docker-compose up
+
+# For CPU-only systems (same command, different service)
+docker-compose up
+```
+
+#### Making API requests
+
+Once the container is running, you can make requests to the API:
+
+```bash
+# Upload an image for processing
+curl -X POST http://localhost:8000/predict -F "file=@example_images/blahaj.jpg"
+
+# Download the generated depth map
+curl http://localhost:8000/download/blahaj_depth.png -o blahaj_depth.png
+```
+
 ### 360° panorama images | `moge infer_panorama` 
 
 > *NOTE: This is an experimental extension of MoGe.*
