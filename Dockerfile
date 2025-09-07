@@ -1,22 +1,23 @@
-# Use a PyTorch base image without CUDA
-FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
+# Use a standard Python base image
+FROM python:3.11
 
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies
-RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
-      apt-get update && \
-      DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        git \
-        libglib2.0-0 \
-        libsm6 \
-        libxext6 \
-        libxrender-dev \
-        libgomp1 \
-        libgl1-mesa-glx \
-        tzdata \
-        && rm -rf /var/lib/apt/lists/*
+# Install system dependencies (标准镜像已包含 build-essential)
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources && \
+    apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+      libglib2.0-0 \
+      libsm6 \
+      libxext6 \
+      libxrender-dev \
+      libgomp1 \
+      libgl1 \
+      libgl1-mesa-dev \
+      libx11-dev \
+      tzdata \
+      && rm -rf /var/lib/apt/lists/*
 
 # Install uv for faster dependency management
 RUN pip install uv
